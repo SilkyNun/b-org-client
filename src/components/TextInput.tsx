@@ -81,10 +81,8 @@ const TextInput = (props: {
 
     const ErrorField = () => {
         return error ? (
-            <View style={{
-                width: INPUT_CONTEINER_WIDTH
-            }}>
-                <Text style={{ textAlign: 'left', color: theme.colors.red, fontSize: 12 }}>{error}</Text>
+            <View style={styles.errorFieldContainer}>
+                <Text style={styles.errorFieldText}>{error}</Text>
             </View>
         ) : null;
     }
@@ -92,23 +90,8 @@ const TextInput = (props: {
     return (
         <View>
             <TouchableWithoutFeedback onPress={() => input.current?.focus()}>
-                <View style={{
-                    flexDirection: 'column-reverse',
-                    height: INPUT_CONTEINER_HEIGHT + LABEL_HEIGHT / 2
-                }}
-                >
-                    <View style={[{
-                        width: INPUT_CONTEINER_WIDTH,
-                        height: INPUT_CONTEINER_HEIGHT,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        borderColor: 'black',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        padding: 8,
-                        backgroundColor: 'white'
-                    }, style]}
-                    >
+                <View style={styles.outerContainer}>
+                    <View style={[styles.innerContainer, style]}>
                         <RNTextInput
                             ref={input}
                             onChangeText={handleChangeText}
@@ -117,7 +100,6 @@ const TextInput = (props: {
                             style={styles.input}
                             value={value}
                         />
-
                         {!empty && (
                             <TouchableOpacity
                                 onPress={resetInput}
@@ -155,6 +137,29 @@ const styles = StyleSheet.create({
         width:
             INPUT_CONTEINER_WIDTH - INPUT_ICON_SIZE - INPUT_CONTEINER_PADDING * 2,
     },
+    outerContainer: {
+        flexDirection: 'column-reverse',
+        height: INPUT_CONTEINER_HEIGHT + LABEL_HEIGHT / 2
+    },
+    innerContainer: {
+        width: INPUT_CONTEINER_WIDTH,
+        height: INPUT_CONTEINER_HEIGHT,
+        borderWidth: 1,
+        borderRadius: 8,
+        borderColor: 'black',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 8,
+        backgroundColor: 'white'
+    },
+    errorFieldText: {
+        textAlign: 'left',
+        color: theme.colors.red,
+        fontSize: 12
+    },
+    errorFieldContainer: {
+        width: INPUT_CONTEINER_WIDTH
+    }
 });
 
 export default TextInput

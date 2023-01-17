@@ -1,15 +1,13 @@
 import { registerRootComponent } from 'expo';
-import { View } from 'react-native';
-import SignIn from './screens/SignIn';
-
+import { StatusBar } from 'expo-status-bar';
+import SignInPassword from './modules/sign-in/SignInPassword';
 
 export const App = () => {
   return (
-    <View style={{
-      flex: 1
-    }}>
-      <SignIn/>
-    </View>
+    <>
+      <StatusBar style='auto' translucent={false} backgroundColor='white'/>
+      <SignInPassword tel='+375 29 840-32-32' />
+    </>
   );
 }
 
