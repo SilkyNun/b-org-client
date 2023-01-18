@@ -15,11 +15,26 @@ const SignInPassword = ({
 }: SignInPasswordProps) => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState('');
 
     const handleDisabled = () => {
         return password === '';
     }
 
+    const handleOnChangeText = (text: string) => {
+        setError('');
+        setPassword(text);
+    }
+
+    const handleForgotPasswordPress = () => {
+        alert('forgot password'); 
+    }
+
+    const handleSubmit = () => {
+        setTimeout(() => {
+            setError('Неверный пароль, проверьте введенный данные и повторите попытку')
+        }, 1000);
+    }
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -40,11 +55,15 @@ const SignInPassword = ({
                 <PasswordInput 
                     placeholder='Пароль'
                     value={password}
-                    onChangeText={setPassword}
+                    onChangeText={handleOnChangeText}
                     showPassword={showPassword} 
                     setShowPassword={setShowPassword}
+                    error={error}
                 />
-                <TouchableWithoutFeedback style={styles.forgotPasswordButton}>
+                <TouchableWithoutFeedback 
+                    style={styles.forgotPasswordButton}
+                    onPress={handleForgotPasswordPress}    
+                >
                     <Text style={styles.forgotPasswordText}>
                         Забыли пароль?
                     </Text>
@@ -54,6 +73,7 @@ const SignInPassword = ({
                 <Button
                     name="Продолжить"
                     disabled={handleDisabled()}
+                    onPress={handleSubmit}
                 />
             </View>
         </View>

@@ -8,13 +8,12 @@ import SignInForm from "./components/SignInForm";
 const appIcon = require('./../../../assets/app-icon.png');
 const { width: wWidth } = Dimensions.get('window');
 
-const SignIn = () => {
+const SignInLogin = () => {
     const [tel, setTel] = useState('');
 
     return (
         <View style={styles.outerContainer}>
             <View style={[styles.innerContainer, { flex: 0.2 }]}>
-                <Header arrowType="none" />
             </View>
             <View style={styles.innerContainer}>
                 <Image source={appIcon} style={styles.icon} />
@@ -30,7 +29,9 @@ const SignIn = () => {
 
 const styles = StyleSheet.create({
     outerContainer: {
-        flex: 1
+        flex: 1,
+        width: '90%',
+        alignSelf: 'center'
     },
     innerContainer: {
         flex: 0.4,
@@ -52,4 +53,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SignIn;
+export default SignInLogin;

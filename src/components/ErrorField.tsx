@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import theme from "../app/theme";
 
 interface ErrorFieldProps {
-    error: string
+    error?: string
 }
 
 const ErrorField = ({

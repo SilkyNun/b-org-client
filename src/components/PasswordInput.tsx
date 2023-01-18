@@ -7,14 +7,18 @@ import ErrorField from "./ErrorField";
 
 interface PasswordInputProps extends TextInputProps {
     showPassword: boolean,
-    setShowPassword: (_: boolean) => void
+    setShowPassword: (_: boolean) => void,
+    error?: string,
 }
 
 const PasswordInput = ({
     showPassword,
     setShowPassword,
+    error,
     ...rest
 }: PasswordInputProps) => {
+    const inputStyle = error ? {...styles.main, ...styles.incorrectMain} : styles.main; 
+
     const handlePress = () => {
         setShowPassword(!showPassword);
     }
@@ -26,7 +30,7 @@ const PasswordInput = ({
 
     return (
         <View style={styles.container}>
-            <View style={styles.main}>
+            <View style={inputStyle}>
                 <RNTextInput
                     style={styles.input}
                     secureTextEntry={!showPassword}
@@ -38,7 +42,7 @@ const PasswordInput = ({
                     {showIcon}
                 </Pressable>
             </View>
-            <ErrorField error="Неверный пароль, проверьте правильность введенных данных"/>
+            <ErrorField error={error}/>
         </View>
     )
 }
@@ -67,6 +71,11 @@ const styles = StyleSheet.create({
         padding: 8,
         backgroundColor: theme.colors.secondary,
         marginBottom: theme.margins.xs
+    },
+    incorrectMain: {
+        borderColor: theme.colors.red,
+        borderWidth: 1,
+        backgroundColor: theme.colors.lightRed,
     }
 })
 

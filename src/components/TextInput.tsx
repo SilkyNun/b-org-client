@@ -152,6 +152,11 @@ const styles = StyleSheet.create({
         padding: 8,
         backgroundColor: 'white'
     },
+    incorrectInnerContainer: {
+        borderColor: theme.colors.red,
+        borderWidth: 1,
+        backgroundColor: theme.colors.lightRed,
+    },
     errorFieldText: {
         textAlign: 'left',
         color: theme.colors.red,

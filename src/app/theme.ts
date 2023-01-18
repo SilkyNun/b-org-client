@@ -9,7 +9,8 @@ const theme = {
         red: '#D6141C',
         white: '#FFF',
         grey: '#808080',
-        lightGrey: '#CCC'
+        lightGrey: '#CCC',
+        lightRed: 'rgba(255,0,0,0.1)'
     },
     paddings: {
         xs: 4,
@@ -29,6 +30,11 @@ const theme = {
         s: 0.3,
         m: 0.6,
         l: 1
+    },
+    fontSize: {
+        s: 12,
+        m: 16,
+        l: 20
     }
 }
 
