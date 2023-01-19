@@ -1,14 +1,12 @@
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
-import SignInLogin from './modules/sign-in/SignInLogin';
-import SignInPassword from './modules/sign-in/SignInPassword';
-import SignUpPhone from './modules/sign-up/SignUpPhone';
+import PhoneForm from './modules/sign-up/PhoneForm';
 
 export const App = () => {
   return (
     <>
-      <StatusBar style='auto' translucent={false} backgroundColor='white'/>
-      <SignUpPhone/>
+      <StatusBar style='auto' translucent={false} backgroundColor='white' />
+      <PhoneForm />
     </>
   );
 }

@@ -1,29 +1,27 @@
 import { Feather as Icon } from "@expo/vector-icons";
-import React from 'react';
+import React, { useState } from 'react';
 import { Pressable, StyleSheet, TextInput as RNTextInput, TextInputProps, View } from 'react-native';
 import theme from '../app/theme';
 import ErrorField from "./ErrorField";
 
 
 interface PasswordInputProps extends TextInputProps {
-    showPassword: boolean,
-    setShowPassword: (_: boolean) => void,
     error?: string,
 }
 
 const PasswordInput = ({
-    showPassword,
-    setShowPassword,
     error,
     ...rest
 }: PasswordInputProps) => {
-    const inputStyle = error ? {...styles.main, ...styles.incorrectMain} : styles.main; 
+    const inputStyle = error ? {...styles.main, ...styles.incorrectMain} : styles.main;
+    
+    const [showPassword,setShowPassword] = useState(false);
 
     const handlePress = () => {
         setShowPassword(!showPassword);
     }
 
-    const showIcon = showPassword === true ?
+    const showIcon = showPassword ?
         <Icon name='eye-off' size={20} color={theme.colors.lightGrey} />
         :
         <Icon name='eye' size={20} color={theme.colors.lightGrey} />

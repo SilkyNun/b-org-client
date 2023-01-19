@@ -8,11 +8,15 @@ interface ErrorFieldProps {
 const ErrorField = ({
     error
 }: ErrorFieldProps) => {
-    return error ? (
+    if (!error) {
+        return null;
+    }
+
+    return (
         <View style={styles.errorFieldContainer}>
             <Text style={styles.errorFieldText}>{error}</Text>
         </View>
-    ) : null;
+    );
 }
 
 const styles = StyleSheet.create({
