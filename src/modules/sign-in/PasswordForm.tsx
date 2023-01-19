@@ -4,17 +4,15 @@ import theme from "../../app/theme";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import PasswordInput from "../../components/PasswordInput";
-import TextInput from "../../components/TextInput";
 
-interface SignInPasswordProps {
+interface PasswordFormProps {
     tel: string
 }
 
-const SignInPassword = ({
+const PasswordForm = ({
     tel
-}: SignInPasswordProps) => {
+}: PasswordFormProps) => {
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
 
     const handleDisabled = () => {
@@ -27,7 +25,7 @@ const SignInPassword = ({
     }
 
     const handleForgotPasswordPress = () => {
-        alert('forgot password'); 
+        alert('forgot password');
     }
 
     const handleSubmit = () => {
@@ -52,17 +50,15 @@ const SignInPassword = ({
                         {tel}
                     </Text>
                 </View>
-                <PasswordInput 
+                <PasswordInput
                     placeholder='Пароль'
                     value={password}
                     onChangeText={handleOnChangeText}
-                    showPassword={showPassword} 
-                    setShowPassword={setShowPassword}
                     error={error}
                 />
-                <TouchableWithoutFeedback 
+                <TouchableWithoutFeedback
                     style={styles.forgotPasswordButton}
-                    onPress={handleForgotPasswordPress}    
+                    onPress={handleForgotPasswordPress}
                 >
                     <Text style={styles.forgotPasswordText}>
                         Забыли пароль?
@@ -70,18 +66,12 @@ const SignInPassword = ({
                 </TouchableWithoutFeedback>
             </View>
             <View style={styles.footer}>
-                <Button
-                    name="Продолжить"
-                    disabled={handleDisabled()}
-                    onPress={handleSubmit}
-                />
+                <Button disabled={handleDisabled()} onPress={handleSubmit}>
+                    Продолжить
+                </Button>
             </View>
         </View>
     )
-}
-const debug = {
-    borderWidth: 1,
-    borderColor: 'black'
 }
 
 const styles = StyleSheet.create({
@@ -135,4 +125,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SignInPassword;
+export default PasswordForm;

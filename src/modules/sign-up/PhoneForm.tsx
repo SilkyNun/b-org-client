@@ -30,9 +30,7 @@ const PhoneForm = ({
         setPhone(text);
     }
 
-    const handleDisabled = () => {
-        return phone.length !== PHONE_LENGTH;
-    }
+    const handleDisabled = phone.length !== PHONE_LENGTH;
 
     return (
         <View style={styles.container}>
@@ -55,10 +53,11 @@ const PhoneForm = ({
             </View>
             <View style={styles.footer}>
                 <Button
-                    name="Продолжить"
                     onPress={handleSubmit}
-                    disabled={handleDisabled()}
-                />
+                    disabled={handleDisabled}
+                >
+                    Продолжить
+                </Button>
             </View>
         </View>
     )

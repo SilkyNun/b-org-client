@@ -2,8 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, TextProps } from 'react-native'
 import theme from '../app/theme'
 
-interface DescriptionProps extends TextProps {
-    children: string | never[]
+export interface DescriptionProps extends TextProps {
+    children?: string | string[] | never[]
 }
 
 const Description = ({

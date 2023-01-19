@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import theme from "../../app/theme";
 import Button from "../../components/Button";
-import Header from "../../components/Header";
 import SignInForm from "./components/SignInForm";
 
 const appIcon = require('./../../../assets/app-icon.png');
 const { width: wWidth } = Dimensions.get('window');
 
-const SignInLogin = () => {
+const LoginForm = () => {
     const [tel, setTel] = useState('');
 
     return (
@@ -21,7 +20,9 @@ const SignInLogin = () => {
                 <SignInForm />
             </View>
             <View style={[styles.innerContainer, { justifyContent: 'flex-end' }]}>
-                <Button name='Зарегистрироваться' style={styles.signUpButton} />
+                <Button style={styles.signUpButton}>
+                    Зарегистрироваться
+                </Button>
             </View>
         </View>
     )
@@ -53,4 +54,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SignInLogin;
+export default LoginForm;

@@ -35,6 +35,10 @@ const theme = {
         s: 12,
         m: 16,
         l: 20
+    },
+    debug: {
+        borderWidth: 1,
+        borderColor: 'black'
     }
 }
 
