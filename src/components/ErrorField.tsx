@@ -1,19 +1,24 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ViewProps } from "react-native";
 import theme from "../app/theme";
 
-interface ErrorFieldProps {
+interface ErrorFieldProps extends ViewProps {
     error?: string
 }
 
 const ErrorField = ({
-    error
+    error,
+    style: outerStyle,
+    ...rest
 }: ErrorFieldProps) => {
     if (!error) {
         return null;
     }
 
     return (
-        <View style={styles.errorFieldContainer}>
+        <View 
+            style={[styles.errorFieldContainer, outerStyle]}
+            {...rest}
+        >
             <Text style={styles.errorFieldText}>{error}</Text>
         </View>
     );

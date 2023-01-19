@@ -1,12 +1,12 @@
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
-import PhoneForm from './modules/sign-up/PhoneForm';
+import SmsForm from './modules/sign-up/SmsForm';
 
 export const App = () => {
   return (
     <>
       <StatusBar style='auto' translucent={false} backgroundColor='white' />
-      <PhoneForm />
+      <SmsForm tel='+375 29 840-32-32' />
     </>
   );
 }

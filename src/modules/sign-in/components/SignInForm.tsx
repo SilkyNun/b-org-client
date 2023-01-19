@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 import theme from '../../../app/theme';
 import Button from '../../../components/Button';
-import TextInput from '../../../components/TextInput';
+import TextInput from '../../../components/AnimatedTextInput';
 
 
 const SignInForm = () => {

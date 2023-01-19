@@ -1,28 +1,36 @@
-import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from "react-native"
-import theme from "../app/theme"
+import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import theme from "../app/theme";
 
 interface ButtonProps extends TouchableOpacityProps {
-  name: string,
-  disabled?: boolean
+  children: string | never[],
+  disabled?: boolean,
+  type?: 'primary' | 'secondary'
 }
 
 const Button = ({
-  name,
-  style,
+  type = 'primary',
+  children,
+  style: outerStyle,
   disabled,
   ...rest
 }: ButtonProps) => {
-
   return (
     <TouchableOpacity
-      style={[styles.container, style, {
+      style={[styles.container, outerStyle, {
+        backgroundColor: type === 'primary' ? theme.colors.primary : theme.colors.white,
         opacity: disabled ? 0.5 : 1
       }]}
       activeOpacity={0.7}
       disabled={disabled}
       {...rest}
     >
-      <Text style={styles.text}>{name}</Text>
+      <Text
+        style={[styles.text, {
+          color: type === 'primary' ? theme.colors.white : theme.colors.primary
+        }]}
+      >
+        {children}
+      </Text>
     </TouchableOpacity>
   )
 }
@@ -32,8 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     borderRadius: 8,
     padding: theme.paddings.m,
-    width: '100%',
-    margin: theme.margins.l,
+    width: '100%'
   },
   text: {
     textAlign: 'center',

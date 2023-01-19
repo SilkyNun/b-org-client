@@ -4,7 +4,7 @@ import theme from "../../app/theme";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import PasswordInput from "../../components/PasswordInput";
-import TextInput from "../../components/TextInput";
+import TextInput from "../../components/AnimatedTextInput";
 
 interface SignInPasswordProps {
     tel: string
