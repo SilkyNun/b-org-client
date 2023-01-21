@@ -35,7 +35,7 @@ const AddPhotoIcon = ({
     }))
 
     return (
-        <Animated.View style={[styles.container, animatedViewStyle]} ref={viewRef}
+        <Animated.View style={[styles.container, animatedViewStyle]} ref={() => viewRef.current?.focus()}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}>
             <Icon name='camera' size={30} color={theme.colors.primary} />
