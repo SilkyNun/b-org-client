@@ -1,19 +1,23 @@
 import { Feather as Icon } from "@expo/vector-icons";
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, TextInput as RNTextInput, TextInputProps, View } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, TextInput as RNTextInput, TextInputProps, View, ViewStyle } from 'react-native';
 import theme from '../app/theme';
 import ErrorField from "./ErrorField";
 
 
 interface PasswordInputProps extends TextInputProps {
     error?: string,
+    containerStyle?: StyleProp<ViewStyle>
 }
 
 const PasswordInput = ({
     error,
+    style: outerStyle,
+    containerStyle,
     ...rest
 }: PasswordInputProps) => {
-    const inputStyle = error ? {...styles.main, ...styles.incorrectMain} : styles.main;
+    //@ts-ignore
+    const inputStyle = error ? {...styles.main, ...outerStyle, ...styles.incorrectMain} : {...styles.main, ...outerStyle};
     
     const [showPassword,setShowPassword] = useState(false);
 
@@ -27,7 +31,7 @@ const PasswordInput = ({
         <Icon name='eye' size={20} color={theme.colors.lightGrey} />
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, containerStyle]}>
             <View style={inputStyle}>
                 <RNTextInput
                     style={styles.input}
@@ -68,7 +72,6 @@ const styles = StyleSheet.create({
         borderColor: theme.colors.primary,
         padding: 8,
         backgroundColor: theme.colors.secondary,
-        marginBottom: theme.margins.xs
     },
     incorrectMain: {
         borderColor: theme.colors.red,

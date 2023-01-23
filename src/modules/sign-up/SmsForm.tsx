@@ -51,20 +51,17 @@ const SmsForm = ({
                 <Description style={styles.tel}>
                     {tel}
                 </Description>
-                <TextInput
+                <TextInput style={styles.input}
                     placeholder={PLACEHOLDER_TEXT}
-                    style={styles.input}
                     keyboardType='decimal-pad'
                     maxLength={10}
-
                     value={code}
                     onChangeText={handleChangeText}
                     error={error}
                 />
             </View>
             <View style={styles.footer}>
-                <Button
-                    style={styles.continueButton}
+                <Button style={styles.continueButton}
                     type='primary'
                     disabled={handleDisabled}
                     onPress={handleSubmit}

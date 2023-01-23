@@ -1,28 +1,62 @@
-import React from 'react'
-import { StyleSheet, TextInput as RNTextInput, TextInputProps as RNTextInputProps, View } from 'react-native'
-import theme from '../app/theme'
-import ErrorField from './ErrorField'
+import React from 'react';
+import { StyleProp, StyleSheet, TextInputProps as RNTextInputProps, View, ViewStyle, TextInput as RNTextInput, TouchableOpacity } from 'react-native';
+import theme from '../app/theme';
+import ErrorField from './ErrorField';
+import { Feather as Icon } from "@expo/vector-icons"
 
-interface TextInputProps extends RNTextInputProps {
-    error?: string
+export interface TextInputProps extends RNTextInputProps {
+    error?: string,
+    style?: StyleProp<ViewStyle>,
+    containerStyle?: StyleProp<ViewStyle>,
+    errorFieldStyle?: StyleProp<ViewStyle>
 }
 
-const TextInput = ({
-    error,
-    style: outerStyles,
-    ...rest
-}: TextInputProps) => {
-    //@ts-ignore
-    const inputStylesCorrect = {...styles.input, ...outerStyles};
-    const inputStylesError = {...inputStylesCorrect, ...styles.error};
-    const inputStyle = error ? inputStylesError : inputStylesCorrect;
+class TextInput extends React.Component<TextInputProps> {
+    render(): React.ReactNode {
+        const {
+            error,
+            value,
+            onChangeText,
+            style: outerStyles,
+            containerStyle,
+            errorFieldStyle,
+            ...rest
+        } = this.props;
 
-    return (
-        <View style={styles.container}>
-            <RNTextInput style={inputStyle} {...rest}/>
-            <ErrorField error={error} style={styles.errorField}/>
-        </View>
-    )
+        const isEmpty = value === '';
+        //@ts-ignore
+        const inputContainerStylesCorrect = { ...styles.inputContainer, ...outerStyles };
+        const inputContainerStylesError = { ...inputContainerStylesCorrect, ...styles.error };
+        const inputContainerStyle = error ? inputContainerStylesError : inputContainerStylesCorrect;
+
+
+        const resetInput = () => {
+            if (onChangeText) {
+                onChangeText('');
+            }
+        }
+
+        return (
+            <View style={[styles.container, containerStyle]}>
+                <View style={inputContainerStyle}>
+                    <RNTextInput style={styles.input}
+                        value={value}
+                        onChangeText={onChangeText}
+                        {...rest}
+                    />
+                    <TouchableOpacity style={styles.iconContainer}>
+                        {!isEmpty && (
+                            <Icon name="x"
+                                size={19}
+                                color={theme.colors.lightGrey}
+                                onPress={resetInput} />
+                        )}
+                    </TouchableOpacity>
+                </View>
+                <ErrorField error={error} style={errorFieldStyle} />
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -30,16 +64,18 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center'
     },
-    input: {
-        width: '100%',
-        borderWidth: 1,
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: theme.colors.secondary,
+        color: theme.colors.grey,
         borderRadius: 8,
         borderColor: theme.colors.primary,
+        borderWidth: 1,
         padding: 8,
-        backgroundColor: theme.colors.secondary,
-        marginBottom: theme.margins.xs,
-
-        color: theme.colors.grey,
+    },
+    input: {
+        flex: 0.9,
         letterSpacing: theme.letterSpacing.s,
         fontSize: 16
     },
@@ -48,8 +84,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         backgroundColor: theme.colors.lightRed,
     },
-    errorField: {
-        alignItems :'center'
+    iconContainer: {
+        flex: 0.1,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 

@@ -1,13 +1,14 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import SignUpForm from './modules/sign-up/SignUpForm';
+import SmsForm from './modules/sign-up/SmsForm';
 
 export const App = () => {
   return (
-    <>
-      <StatusBar style='auto' translucent={false} backgroundColor='white' />
-      <SignUpForm />
-    </>
+    <NavigationContainer>
+      
+    </NavigationContainer>
   );
 }
 
