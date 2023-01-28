@@ -1,16 +1,8 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { registerRootComponent } from 'expo';
-import { StatusBar } from 'expo-status-bar';
-import SignUpForm from './modules/sign-up/SignUpForm';
-import SmsForm from './modules/sign-up/SmsForm';
+import Navigation from './navigation/Navigation';
 
 export const App = () => {
-  return (
-    <NavigationContainer>
-      
-    </NavigationContainer>
-  );
-}
+	return <Navigation />;
+};
 
 registerRootComponent(App);
-
