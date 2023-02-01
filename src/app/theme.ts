@@ -10,7 +10,9 @@ const theme = {
         white: '#FFF',
         grey: '#808080',
         lightGrey: '#CCC',
-        lightRed: 'rgba(255,0,0,0.1)'
+        lightRed: 'rgba(255,0,0,0.1)',
+        transparentGrey: 'rgba(0,0,0,0.2)',
+        transparent: 'rgba(0,0,0,0.0)'
     },
     paddings: {
         xs: 4,
