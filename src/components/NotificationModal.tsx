@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
 		height: MODAL_HEIGHT,
 		position: 'absolute',
 		top: -MODAL_HEIGHT,
-		length: 0,
+		left: 0,
 		right: 0,
 
 		justifyContent: 'center',
